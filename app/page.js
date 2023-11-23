@@ -1,18 +1,22 @@
 "use client"
 
-import React from "react"
+import React, { useState } from "react"
 import useFetch from "./CustomHook/UseFetch"
 import Card from "./Components/Card"
 
 export default function Home() {
-  const dataRamdomUser = useFetch("https://randomuser.me/api")
+  const dataRamdomUsers = useFetch("https://randomuser.me/api")
 
-  console.log(dataRamdomUser)
+  if (!dataRamdomUsers.results || dataRamdomUsers.results.length === 0) {
+    // Les données ne sont pas encore disponibles
+    return <div>Loading...</div>;
+  }
 
   return (
     <main>
       <div>
-        <Card/>
+        <Card
+        item = {dataRamdomUsers.results}/>
       </div>
     </main>
   )

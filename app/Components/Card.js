@@ -1,15 +1,15 @@
 import React from 'react'
 
-const Card = () => {
+const Card = (props) => {
   return (
     <div>
-        <img src=""/>
-        <p>Name</p>
-        <p>Birthday</p>
-        <p>Email</p>
-        <p>Adress</p>
-        <p>Phone</p>
-        <p>Password</p>
+        <img src={props.item[0].picture.large}/>
+        <p>Name: {props.item[0].name.first} {props.item[0].name.last}</p>
+        <p>Birthday: {props.item[0].registered.date}</p>
+        <p>Email: {props.item[0].email}</p>
+        <p>Adress: {props.item[0].location.street.number} {props.item[0].location.street.name}</p>
+        <p>Phone: {props.item[0].cell}</p>
+        <p>Password: {props.item[0].login.password}</p>
     </div>
   )
 }
