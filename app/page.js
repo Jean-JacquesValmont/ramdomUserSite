@@ -5,7 +5,7 @@ import useFetch from "./CustomHook/UseFetch"
 import Card from "./Components/Card"
 
 export default function Home() {
-  const dataRamdomUsers = useFetch("https://randomuser.me/api/?results=2")
+  const dataRamdomUsers = useFetch("https://randomuser.me/api/?results=100")
 
   if (!dataRamdomUsers.results || dataRamdomUsers.results.length === 0) {
     // Les données ne sont pas encore disponibles
@@ -23,7 +23,7 @@ export default function Home() {
 
   return (
     <main>
-      <div>
+      <div className="m-4 grid grid-cols-4">
         {cardsUser}
       </div>
     </main>

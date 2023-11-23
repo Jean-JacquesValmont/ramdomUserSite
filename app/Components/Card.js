@@ -1,11 +1,12 @@
 import React from 'react'
 
 const Card = (props) => {
+
   return (
     <div>
-        <img src={props.item.picture.large}/>
+        <img src={props.item.picture.large} alt=""/>
         <p>Name: {props.item.name.first} {props.item.name.last}</p>
-        <p>Birthday: {props.item.registered.date}</p>
+        <p>Birthday: {props.item.registered.date.substring(0, 10)}</p>
         <p>Email: {props.item.email}</p>
         <p>Adress: {props.item.location.street.number} {props.item.location.street.name}</p>
         <p>Phone: {props.item.cell}</p>
