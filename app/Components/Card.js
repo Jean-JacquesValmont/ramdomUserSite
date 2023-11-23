@@ -51,7 +51,7 @@ const Card = (props) => {
     const handleMouseEnterPassword = () => handleMouseEnter('password')
 
   return (
-    <div className="flex flex-col text-center justify-center border-4 border-black rounded-lg">
+    <div className="flex flex-col text-center justify-center border-2 border-black rounded-lg">
         <img src={props.item.picture.large} alt=""/>
         <div className="flex justify-between">
             {isNameHovered ? <FaUserAlt size={32} className="text-red-500"/> : <FaUserAlt size={16} onMouseEnter={handleMouseEnterName}/>}
@@ -62,12 +62,12 @@ const Card = (props) => {
             {isPasswordHovered ? <FaLock size={32} className="text-red-500"/> : <FaLock size={16} onMouseEnter={handleMouseEnterPassword}/>}
         </div>
         <div>
-            {isNameHovered ? <p>Name: {props.item.name.first} {props.item.name.last}</p> : ""}
-            {isBirthdayHovered ? <p>Birthday: {props.item.registered.date.substring(0, 10)}</p> : ""}
-            {isEmailHovered ? <p>Email: {props.item.email}</p> : ""}
-            {isAddressHovered ? <p>Address: {props.item.location.street.number} {props.item.location.street.name}</p> : ""}
-            {isPhoneHovered ? <p>Phone: {props.item.cell}</p> : ""}
-            {isPasswordHovered ? <p>Password: {props.item.login.password}</p> : ""}
+            {isNameHovered ? <div> <h2 className="font-bold text-xl">Name</h2> <p>{props.item.name.first} {props.item.name.last}</p></div> : ""}
+            {isBirthdayHovered ? <div> <h2 className="font-bold text-xl">Birthday</h2> <p>{props.item.registered.date.substring(0, 10)}</p> </div>: ""}
+            {isEmailHovered ? <div> <h2 className="font-bold text-xl">Email</h2> <p>{props.item.email}</p> </div>: ""}
+            {isAddressHovered ? <div> <h2 className="font-bold text-xl">Address</h2> <p>{props.item.location.street.number} {props.item.location.street.name}</p> </div>: ""}
+            {isPhoneHovered ? <div> <h2 className="font-bold text-xl">Phone</h2> <p>{props.item.cell}</p> </div>: ""}
+            {isPasswordHovered ? <div> <h2 className="font-bold text-xl">Password</h2> <p>{props.item.login.password}</p> </div>: ""}
         </div>
     </div>
   )
