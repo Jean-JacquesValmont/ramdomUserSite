@@ -51,15 +51,15 @@ const Card = (props) => {
     const handleMouseEnterPassword = () => handleMouseEnter('password')
 
   return (
-    <div className="flex flex-col text-center justify-center border-2 border-black rounded-lg">
+    <div className="flex flex-col text-center justify-center bg-white border-2 border-red-500 rounded-lg transform hover:scale-105 transition-transform">
         <img src={props.item.picture.large} alt=""/>
         <div className="flex justify-between">
-            {isNameHovered ? <FaUserAlt size={32} className="text-red-500"/> : <FaUserAlt size={16} onMouseEnter={handleMouseEnterName}/>}
-            {isBirthdayHovered ? <FaBirthdayCake size={32} className="text-red-500"/> : <FaBirthdayCake size={16} onMouseEnter={handleMouseEnterBirthday}/>}
-            {isEmailHovered ? <MdEmail size={32} className="text-red-500"/> : <MdEmail size={16} onMouseEnter={handleMouseEnterEmail}/>}
-            {isAddressHovered ? <FaMapMarkerAlt size={32} className="text-red-500"/> : <FaMapMarkerAlt size={16} onMouseEnter={handleMouseEnterAddress}/>}
-            {isPhoneHovered ? <FaPhoneAlt size={32} className="text-red-500"/> : <FaPhoneAlt size={16} onMouseEnter={handleMouseEnterPhone}/>}
-            {isPasswordHovered ? <FaLock size={32} className="text-red-500"/> : <FaLock size={16} onMouseEnter={handleMouseEnterPassword}/>}
+            {isNameHovered ? <FaUserAlt size={48} className="text-red-500"/> : <FaUserAlt size={24} onMouseEnter={handleMouseEnterName}/>}
+            {isBirthdayHovered ? <FaBirthdayCake size={48} className="text-red-500"/> : <FaBirthdayCake size={24} onMouseEnter={handleMouseEnterBirthday}/>}
+            {isEmailHovered ? <MdEmail size={48} className="text-red-500"/> : <MdEmail size={24} onMouseEnter={handleMouseEnterEmail}/>}
+            {isAddressHovered ? <FaMapMarkerAlt size={48} className="text-red-500"/> : <FaMapMarkerAlt size={24} onMouseEnter={handleMouseEnterAddress}/>}
+            {isPhoneHovered ? <FaPhoneAlt size={48} className="text-red-500"/> : <FaPhoneAlt size={24} onMouseEnter={handleMouseEnterPhone}/>}
+            {isPasswordHovered ? <FaLock size={48} className="text-red-500"/> : <FaLock size={24} onMouseEnter={handleMouseEnterPassword}/>}
         </div>
         <div>
             {isNameHovered ? <div> <h2 className="font-bold text-xl">Name</h2> <p>{props.item.name.first} {props.item.name.last}</p></div> : ""}
