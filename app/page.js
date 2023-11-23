@@ -8,7 +8,6 @@ export default function Home() {
   const dataRamdomUsers = useFetch("https://randomuser.me/api/?results=100")
 
   if (!dataRamdomUsers.results || dataRamdomUsers.results.length === 0) {
-    // Les données ne sont pas encore disponibles
     return <div>Loading...</div>;
   }
 
