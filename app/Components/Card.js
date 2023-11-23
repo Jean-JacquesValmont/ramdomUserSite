@@ -16,6 +16,13 @@ const Card = (props) => {
 
     const handleMouseEnter = (key) => {
 
+            setNameHovered(false)
+            setBirthdayHovered(false)
+            setEmailHovered(false)
+            setAddressHovered(false)
+            setPhoneHovered(false)
+            setPasswordHovered(false)
+
         if (key == "name"){
             setNameHovered(true)
         }
@@ -44,22 +51,24 @@ const Card = (props) => {
     const handleMouseEnterPassword = () => handleMouseEnter('password')
 
   return (
-    <div className="flex flex-col text-center justify-center">
+    <div className="flex flex-col text-center justify-center border-4 border-black rounded-lg">
         <img src={props.item.picture.large} alt=""/>
         <div className="flex justify-between">
-            <FaUserAlt onMouseEnter={handleMouseEnterName}/>
-            <FaBirthdayCake onMouseEnter={handleMouseEnterBirthday}/>
-            <MdEmail onMouseEnter={handleMouseEnterEmail}/>
-            <FaMapMarkerAlt onMouseEnter={handleMouseEnterAddress}/>
-            <FaPhoneAlt onMouseEnter={handleMouseEnterPhone}/>
-            <FaLock onMouseEnter={handleMouseEnterPassword}/>
+            {isNameHovered ? <FaUserAlt size={32} className="text-red-500"/> : <FaUserAlt size={16} onMouseEnter={handleMouseEnterName}/>}
+            {isBirthdayHovered ? <FaBirthdayCake size={32} className="text-red-500"/> : <FaBirthdayCake size={16} onMouseEnter={handleMouseEnterBirthday}/>}
+            {isEmailHovered ? <MdEmail size={32} className="text-red-500"/> : <MdEmail size={16} onMouseEnter={handleMouseEnterEmail}/>}
+            {isAddressHovered ? <FaMapMarkerAlt size={32} className="text-red-500"/> : <FaMapMarkerAlt size={16} onMouseEnter={handleMouseEnterAddress}/>}
+            {isPhoneHovered ? <FaPhoneAlt size={32} className="text-red-500"/> : <FaPhoneAlt size={16} onMouseEnter={handleMouseEnterPhone}/>}
+            {isPasswordHovered ? <FaLock size={32} className="text-red-500"/> : <FaLock size={16} onMouseEnter={handleMouseEnterPassword}/>}
         </div>
-        {isNameHovered ? <p>Name: {props.item.name.first} {props.item.name.last}</p> : ""}
-        {isBirthdayHovered ? <p>Birthday: {props.item.registered.date.substring(0, 10)}</p> : ""}
-        {isEmailHovered ? <p>Email: {props.item.email}</p> : ""}
-        {isAddressHovered ? <p>Address: {props.item.location.street.number} {props.item.location.street.name}</p> : ""}
-        {isPhoneHovered ? <p>Phone: {props.item.cell}</p> : ""}
-        {isPasswordHovered ? <p>Password: {props.item.login.password}</p> : ""}
+        <div>
+            {isNameHovered ? <p>Name: {props.item.name.first} {props.item.name.last}</p> : ""}
+            {isBirthdayHovered ? <p>Birthday: {props.item.registered.date.substring(0, 10)}</p> : ""}
+            {isEmailHovered ? <p>Email: {props.item.email}</p> : ""}
+            {isAddressHovered ? <p>Address: {props.item.location.street.number} {props.item.location.street.name}</p> : ""}
+            {isPhoneHovered ? <p>Phone: {props.item.cell}</p> : ""}
+            {isPasswordHovered ? <p>Password: {props.item.login.password}</p> : ""}
+        </div>
     </div>
   )
 }
