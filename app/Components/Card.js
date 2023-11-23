@@ -51,9 +51,9 @@ const Card = (props) => {
     const handleMouseEnterPassword = () => handleMouseEnter('password')
 
   return (
-    <div className="flex flex-col text-center justify-center bg-white border-2 border-red-500 rounded-lg transform hover:scale-105 transition-transform">
+    <div className="flex flex-col text-center justify-center bg-gradient-to-b from-green-700 to-green-300 border-4 border-double border-grey-500 rounded-lg transform hover:scale-105 transition-transform">
         <img src={props.item.picture.large} alt=""/>
-        <div className="flex justify-between">
+        <div className="flex justify-between m-2">
             {isNameHovered ? <FaUserAlt size={48} className="text-red-500"/> : <FaUserAlt size={24} onMouseEnter={handleMouseEnterName}/>}
             {isBirthdayHovered ? <FaBirthdayCake size={48} className="text-red-500"/> : <FaBirthdayCake size={24} onMouseEnter={handleMouseEnterBirthday}/>}
             {isEmailHovered ? <MdEmail size={48} className="text-red-500"/> : <MdEmail size={24} onMouseEnter={handleMouseEnterEmail}/>}
@@ -61,7 +61,7 @@ const Card = (props) => {
             {isPhoneHovered ? <FaPhoneAlt size={48} className="text-red-500"/> : <FaPhoneAlt size={24} onMouseEnter={handleMouseEnterPhone}/>}
             {isPasswordHovered ? <FaLock size={48} className="text-red-500"/> : <FaLock size={24} onMouseEnter={handleMouseEnterPassword}/>}
         </div>
-        <div>
+        <div className="m-2">
             {isNameHovered ? <div> <h2 className="font-bold text-xl">Name</h2> <p>{props.item.name.first} {props.item.name.last}</p></div> : ""}
             {isBirthdayHovered ? <div> <h2 className="font-bold text-xl">Birthday</h2> <p>{props.item.registered.date.substring(0, 10)}</p> </div>: ""}
             {isEmailHovered ? <div> <h2 className="font-bold text-xl">Email</h2> <p>{props.item.email}</p> </div>: ""}
