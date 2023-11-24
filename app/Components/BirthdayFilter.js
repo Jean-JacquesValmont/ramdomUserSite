@@ -9,8 +9,8 @@ const BirthdayFilter = ({onFilterChange}) => {
     }
 
   return (
-    <div className="flex justify-center m-2">
-        <div>
+    <div className="flex justify-center">
+        <div className="m-2">
             <label>Min Age</label>
             <input
                 className='m-4'
@@ -19,7 +19,7 @@ const BirthdayFilter = ({onFilterChange}) => {
                 onChange={(e) => setMinAge(e.target.value)}
             />
         </div>
-        <div>
+        <div className="m-2">
             <label>Max Age</label>
             <input
                 className='m-4'
@@ -28,7 +28,9 @@ const BirthdayFilter = ({onFilterChange}) => {
                 onChange={(e) => setMaxAge(e.target.value)}
             />
         </div>
-        <button className="bg-yellow-300 border-2 border-black rounded-lg p-2 hover:bg-yellow-600" onClick={handleFilterChange}>Confirm</button>
+        <div>
+            <button className="bg-white border-2 border-black rounded-lg my-6 px-2 hover:bg-zinc-500" onClick={handleFilterChange}>Confirm</button>
+        </div>
     </div>
   )
 }

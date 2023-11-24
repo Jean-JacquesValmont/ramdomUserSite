@@ -60,10 +60,10 @@ const Card = (props) => {
     const handleMouseLeaveCross = () => {setIsCrossHovered(false)}
 
   return (
-    <div className="flex flex-col text-center justify-center bg-gradient-to-b from-yellow-900 to-yellow-400 border-4 border-double border-grey-500 rounded-lg transform hover:scale-105 transition-transform">
+    <div className="flex flex-col text-center justify-center bg-white border-4 border-double border-black rounded-lg transform hover:scale-105 transition-transform">
         {isCrossHovered ? <ImCross className="absolute top-0 right-0 m-2 cursor-pointer text-red-500 bg-black" onClick={handleDelete} onMouseLeave={handleMouseLeaveCross}/> 
         : <ImCross className="absolute top-0 right-0 m-2 cursor-pointer bg-white" onMouseEnter={handleMouseEnterCross}/> }
-        <img src={props.item.picture.large} alt=""/>
+        <img className="rounded-full" src={props.item.picture.large} alt=""/>
         <div className="flex justify-between m-2">
             {isNameHovered ? <FaUserAlt size={48} className="text-red-600 cursor-pointer"/> : <FaUserAlt size={24} onMouseEnter={handleMouseEnterName}/>}
             {isBirthdayHovered ? <FaBirthdayCake size={48} className="text-red-600 cursor-pointer"/> : <FaBirthdayCake size={24} onMouseEnter={handleMouseEnterBirthday}/>}
@@ -72,7 +72,7 @@ const Card = (props) => {
             {isPhoneHovered ? <FaPhoneAlt size={48} className="text-red-600 cursor-pointer"/> : <FaPhoneAlt size={24} onMouseEnter={handleMouseEnterPhone}/>}
             {isPasswordHovered ? <FaLock size={48} className="text-red-600 cursor-pointer"/> : <FaLock size={24} onMouseEnter={handleMouseEnterPassword}/>}
         </div>
-        <div className="m-2">
+        <div className="border-t-2 border-black m-2">
             {isNameHovered ? <div> <h2 className="font-bold text-xl">Name</h2> <p>{props.item.name.first} {props.item.name.last}</p></div> : ""}
             {isBirthdayHovered ? <div> <h2 className="font-bold text-xl">Birthday</h2> <p>{props.item.registered.date.substring(0, 10)}</p> </div>: ""}
             {isEmailHovered ? <div> <h2 className="font-bold text-xl">Email</h2> <p>{props.item.email}</p> </div>: ""}
