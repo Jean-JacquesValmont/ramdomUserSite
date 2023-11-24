@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const useFetch = (url) => {
+const useFetch = (url,number) => {
 
     const [dataFetch, setDataFetch] = useState([])
 
@@ -17,7 +17,7 @@ const useFetch = (url) => {
         }
     };
 
-    fetchData(); }, []);
+    fetchData(); }, [number]);
 
   return (
     dataFetch
