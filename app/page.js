@@ -74,7 +74,7 @@ export default function Home() {
         <button className={styleButton} onClick={decreaseNumberByTen}>Decreased by 10 user</button>
       </div>
       <div className="m-4 grid grid-cols-5 gap-6">
-          {isfilteredApplied ? cardsUserFilter.length === 0 ? <p>Aucun résultat trouvé</p> : cardsUserFilter : cardsUser}
+          {isfilteredApplied ? cardsUserFilter.length === 0 ? <p>No results found</p> : cardsUserFilter : cardsUser}
       </div>
     </main>
   )

@@ -5,61 +5,68 @@ import { FaBirthdayCake } from "react-icons/fa"
 import { FaPhoneAlt } from "react-icons/fa"
 import { FaMapMarkerAlt } from "react-icons/fa"
 import { FaLock } from "react-icons/fa"
+import { ImCross } from "react-icons/im";
 
 const Card = (props) => {
-    const [isNameHovered, setNameHovered] = useState(true)
-    const [isBirthdayHovered, setBirthdayHovered] = useState(false)
-    const [isEmailHovered, setEmailHovered] = useState(false)
-    const [isAddressHovered, setAddressHovered] = useState(false)
-    const [isPhoneHovered, setPhoneHovered] = useState(false)
-    const [isPasswordHovered, setPasswordHovered] = useState(false)
+    const [isNameHovered, setIsNameHovered] = useState(true)
+    const [isBirthdayHovered, setIsBirthdayHovered] = useState(false)
+    const [isEmailHovered, setIsEmailHovered] = useState(false)
+    const [isAddressHovered, setIsAddressHovered] = useState(false)
+    const [isPhoneHovered, setIsPhoneHovered] = useState(false)
+    const [isPasswordHovered, setIsPasswordHovered] = useState(false)
+    const [isCrossHovered, setIsCrossHovered] = useState(false)
 
     const handleMouseEnter = (key) => {
 
-            setNameHovered(false)
-            setBirthdayHovered(false)
-            setEmailHovered(false)
-            setAddressHovered(false)
-            setPhoneHovered(false)
-            setPasswordHovered(false)
+            setIsNameHovered(false)
+            setIsBirthdayHovered(false)
+            setIsEmailHovered(false)
+            setIsAddressHovered(false)
+            setIsPhoneHovered(false)
+            setIsPasswordHovered(false)
+            setIsCrossHovered(false)
 
         if (key == "name"){
-            setNameHovered(true)
+            setIsNameHovered(true)
         }
         else if (key == "birthday"){
-            setBirthdayHovered(true)
+            setIsBirthdayHovered(true)
         }
         else if (key == "email"){
-            setEmailHovered(true)
+            setIsEmailHovered(true)
         }
         else if (key == "address"){
-            setAddressHovered(true)
+            setIsAddressHovered(true)
         }
         else if (key == "phone"){
-            setPhoneHovered(true)
+            setIsPhoneHovered(true)
         }
         else if (key == "password"){
-            setPasswordHovered(true)
+            setIsPasswordHovered(true)
         }
     };
 
-    const handleMouseEnterName = () => handleMouseEnter('name')
-    const handleMouseEnterBirthday = () => handleMouseEnter('birthday')
-    const handleMouseEnterEmail = () => handleMouseEnter('email')
-    const handleMouseEnterAddress = () => handleMouseEnter('address')
-    const handleMouseEnterPhone = () => handleMouseEnter('phone')
-    const handleMouseEnterPassword = () => handleMouseEnter('password')
+    const handleMouseEnterName = () => handleMouseEnter("name")
+    const handleMouseEnterBirthday = () => handleMouseEnter("birthday")
+    const handleMouseEnterEmail = () => handleMouseEnter("email")
+    const handleMouseEnterAddress = () => handleMouseEnter("address")
+    const handleMouseEnterPhone = () => handleMouseEnter("phone")
+    const handleMouseEnterPassword = () => handleMouseEnter("password")
+    const handleMouseEnterCross = () => {setIsCrossHovered(true)}
+    const handleMouseLeaveCross = () => {setIsCrossHovered(false)}
 
   return (
     <div className="flex flex-col text-center justify-center bg-gradient-to-b from-green-900 to-green-500 border-4 border-double border-grey-500 rounded-lg transform hover:scale-105 transition-transform">
+        {isCrossHovered ? <ImCross className="absolute top-0 right-0 m-2 cursor-pointer text-red-500 bg-black" onMouseLeave={handleMouseLeaveCross}/> 
+        : <ImCross className="absolute top-0 right-0 m-2 cursor-pointer bg-white" onMouseEnter={handleMouseEnterCross}/> }
         <img src={props.item.picture.large} alt=""/>
         <div className="flex justify-between m-2">
-            {isNameHovered ? <FaUserAlt size={48} className="text-red-500"/> : <FaUserAlt size={24} onMouseEnter={handleMouseEnterName}/>}
-            {isBirthdayHovered ? <FaBirthdayCake size={48} className="text-red-500"/> : <FaBirthdayCake size={24} onMouseEnter={handleMouseEnterBirthday}/>}
-            {isEmailHovered ? <MdEmail size={48} className="text-red-500"/> : <MdEmail size={24} onMouseEnter={handleMouseEnterEmail}/>}
-            {isAddressHovered ? <FaMapMarkerAlt size={48} className="text-red-500"/> : <FaMapMarkerAlt size={24} onMouseEnter={handleMouseEnterAddress}/>}
-            {isPhoneHovered ? <FaPhoneAlt size={48} className="text-red-500"/> : <FaPhoneAlt size={24} onMouseEnter={handleMouseEnterPhone}/>}
-            {isPasswordHovered ? <FaLock size={48} className="text-red-500"/> : <FaLock size={24} onMouseEnter={handleMouseEnterPassword}/>}
+            {isNameHovered ? <FaUserAlt size={48} className="text-red-500 cursor-pointer"/> : <FaUserAlt size={24} onMouseEnter={handleMouseEnterName}/>}
+            {isBirthdayHovered ? <FaBirthdayCake size={48} className="text-red-500 cursor-pointer"/> : <FaBirthdayCake size={24} onMouseEnter={handleMouseEnterBirthday}/>}
+            {isEmailHovered ? <MdEmail size={48} className="text-red-500 cursor-pointer"/> : <MdEmail size={24} onMouseEnter={handleMouseEnterEmail}/>}
+            {isAddressHovered ? <FaMapMarkerAlt size={48} className="text-red-500 cursor-pointer"/> : <FaMapMarkerAlt size={24} onMouseEnter={handleMouseEnterAddress}/>}
+            {isPhoneHovered ? <FaPhoneAlt size={48} className="text-red-500 cursor-pointer"/> : <FaPhoneAlt size={24} onMouseEnter={handleMouseEnterPhone}/>}
+            {isPasswordHovered ? <FaLock size={48} className="text-red-500 cursor-pointer"/> : <FaLock size={24} onMouseEnter={handleMouseEnterPassword}/>}
         </div>
         <div className="m-2">
             {isNameHovered ? <div> <h2 className="font-bold text-xl">Name</h2> <p>{props.item.name.first} {props.item.name.last}</p></div> : ""}
