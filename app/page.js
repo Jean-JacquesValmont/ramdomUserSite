@@ -7,26 +7,25 @@ import BirthdayFilter from "./Components/BirthdayFilter"
 export default function Home() {
 
   const [numberOfUser, setNumberOfUser] = useState(5)
-  const dataRamdomUsers = useFetch("https://randomuser.me/api/?results="+String(numberOfUser), numberOfUser)
-  const [filteredData, setFilteredData] = useState(dataRamdomUsers)
+  const dataRandomUsers = useFetch("https://randomuser.me/api/?results="+String(numberOfUser), numberOfUser)
+  const [filteredData, setFilteredData] = useState(dataRandomUsers)
   const [isfilteredApplied, setIsfilteredApplied] = useState(false)
   const styleButton = "bg-white border-2 border-black rounded-lg p-2 hover:bg-zinc-500";
 
-  if (!dataRamdomUsers.results || dataRamdomUsers.results.length === 0) {
+  if (!dataRandomUsers.results || dataRandomUsers.results.length === 0) {
     return <div>Loading...</div>;
   }
 
   const handleResetfilter = () => {
     setIsfilteredApplied(false)
-    setFilteredData(dataRamdomUsers.results)
+    setFilteredData(dataRandomUsers.results)
   }
 
   const handleFilterChange = ({min, max}) => {
     const minAge = parseFloat(min)
     const maxAge = parseFloat(max)
 
-    const updatedFilterData = dataRamdomUsers.results.filter((item) => {
-      console.log("item.registered.age: ", item.registered.age)
+    const updatedFilterData = dataRandomUsers.results.filter((item) => {
       const itemAge = parseFloat(item.registered.age)
       return(
         (isNaN(minAge)|| itemAge >= minAge) && 
@@ -36,19 +35,17 @@ export default function Home() {
 
     setFilteredData(updatedFilterData)
     setIsfilteredApplied(true)
-    console.log("updatedFilterData: ", updatedFilterData)
   }
 
   const handleDeleteCard = (itemToDelete) => {
-    const updatedFilteredData = filteredData.filter((item) => item !== itemToDelete);
-    setFilteredData(updatedFilteredData);
-  };
+    const updatedFilteredData = filteredData.filter((item) => item !== itemToDelete)
+    setFilteredData(updatedFilteredData)
+  }
 
   const modifiedNumberOfUser = (number) => {
     setNumberOfUser(numberOfUser + number)
     if(numberOfUser <= 0)
       {setNumberOfUser(2)}
-    console.log(numberOfUser)
   }
 
   const increasedNumberByOne = () => modifiedNumberOfUser(1)
@@ -56,10 +53,10 @@ export default function Home() {
   const decreaseNumberByOne = () => modifiedNumberOfUser(-1)
   const decreaseNumberByTen = () => modifiedNumberOfUser(-10)
 
-  const cardsUser = dataRamdomUsers.results.map(item => {
+  const cardsUser = dataRandomUsers.results.map(item => {
     return (
         <Card
-            key={dataRamdomUsers.results.indexOf(item)}
+            key={dataRandomUsers.results.indexOf(item)}
             item={item}
             onDelete={handleDeleteCard}
         />
@@ -69,7 +66,7 @@ export default function Home() {
   const cardsUserFilter = filteredData.map(item => {
     return (
         <Card
-            key={dataRamdomUsers.results.indexOf(item)}
+            key={dataRandomUsers.results.indexOf(item)}
             item={item}
             onDelete={handleDeleteCard}
         />

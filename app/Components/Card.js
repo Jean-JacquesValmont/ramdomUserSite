@@ -5,7 +5,7 @@ import { FaBirthdayCake } from "react-icons/fa"
 import { FaPhoneAlt } from "react-icons/fa"
 import { FaMapMarkerAlt } from "react-icons/fa"
 import { FaLock } from "react-icons/fa"
-import { ImCross } from "react-icons/im";
+import { ImCross } from "react-icons/im"
 
 const Card = (props) => {
     const [isNameHovered, setIsNameHovered] = useState(true)
@@ -47,7 +47,7 @@ const Card = (props) => {
     }
 
     const handleDelete = () => {
-        props.onDelete(props.item) // Appeler la fonction onDelete du composant parent avec l'élément actuel
+        props.onDelete(props.item)
     }
 
     const handleMouseEnterName = () => handleMouseEnter("name")
