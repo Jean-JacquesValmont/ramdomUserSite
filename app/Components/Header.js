@@ -4,12 +4,12 @@ import { GiCardRandom } from "react-icons/gi";
 
 const Header = () => {
   return (
-    <div className="flex mx-4 items-center bg-white sticky top-0 z-10">
-        <Link href="/">
+    <header className="flex items-center bg-white border-b-4 border-black sticky top-0 z-10">
+        <Link href="/" className="mx-4">
             <GiCardRandom size={64}/>
         </Link>
-        <h1 className="text-4xl font-bold mx-4">RandomProfile</h1>
-    </div>
+        <h1 className="text-4xl font-bold mx-2">RandomProfile</h1>
+    </header>
   )
 }
 

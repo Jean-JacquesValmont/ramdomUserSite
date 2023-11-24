@@ -51,7 +51,7 @@ const Card = (props) => {
     const handleMouseEnterPassword = () => handleMouseEnter('password')
 
   return (
-    <div className="flex flex-col text-center justify-center bg-gradient-to-b from-green-700 to-green-300 border-4 border-double border-grey-500 rounded-lg transform hover:scale-105 transition-transform">
+    <div className="flex flex-col text-center justify-center bg-gradient-to-b from-green-900 to-green-500 border-4 border-double border-grey-500 rounded-lg transform hover:scale-105 transition-transform">
         <img src={props.item.picture.large} alt=""/>
         <div className="flex justify-between m-2">
             {isNameHovered ? <FaUserAlt size={48} className="text-red-500"/> : <FaUserAlt size={24} onMouseEnter={handleMouseEnterName}/>}

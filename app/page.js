@@ -21,8 +21,8 @@ export default function Home() {
   })
 
   return (
-    <main className="bg-black">
-      <div className="m-4 grid grid-cols-5 gap-10">
+    <main className="bg-white">
+      <div className="m-4 grid grid-cols-5 gap-6">
         {cardsUser}
       </div>
     </main>
