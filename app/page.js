@@ -21,7 +21,8 @@ export default function Home() {
     const maxAge = parseFloat(max)
 
     const updatedFilterData = dataRamdomUsers.results.filter((item) => {
-      const itemAge = parseFloat(item.age)
+      console.log("item.registered.age: ", item.registered.age)
+      const itemAge = parseFloat(item.registered.age)
       return(
         (isNaN(minAge)|| itemAge >= minAge) && 
         (isNaN(maxAge)|| itemAge <= maxAge)
@@ -30,6 +31,7 @@ export default function Home() {
 
     setFilteredData(updatedFilterData)
     setIsfilteredApplied(true)
+    console.log("updatedFilterData: ", updatedFilterData)
   }
 
   const modifiedNumberOfUser = (number) => {
@@ -53,6 +55,15 @@ export default function Home() {
     )
   })
 
+  const cardsUserFilter = filteredData.map(item => {
+    return (
+        <Card
+            key={dataRamdomUsers.results.indexOf(item)}
+            item={item}
+        />
+    )
+  })
+
   return (
     <main className="bg-white">
       <BirthdayFilter onFilterChange={handleFilterChange}/>
@@ -63,7 +74,7 @@ export default function Home() {
         <button className={styleButton} onClick={decreaseNumberByTen}>Decreased by 10 user</button>
       </div>
       <div className="m-4 grid grid-cols-5 gap-6">
-      {isfilteredApplied && filteredData.length === 0 ? <p> Aucun résultat trouvé.</p> : cardsUser}
+      {isfilteredApplied ? cardsUserFilter : cardsUser}
       </div>
     </main>
   )
