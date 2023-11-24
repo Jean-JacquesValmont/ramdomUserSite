@@ -34,6 +34,11 @@ export default function Home() {
     console.log("updatedFilterData: ", updatedFilterData)
   }
 
+  const handleDeleteCard = (itemToDelete) => {
+    const updatedFilteredData = filteredData.filter((item) => item !== itemToDelete);
+    setFilteredData(updatedFilteredData);
+  };
+
   const modifiedNumberOfUser = (number) => {
     setNumberOfUser(numberOfUser + number)
     if(numberOfUser <= 0)
@@ -51,6 +56,7 @@ export default function Home() {
         <Card
             key={dataRamdomUsers.results.indexOf(item)}
             item={item}
+            onDelete={handleDeleteCard}
         />
     )
   })
@@ -60,6 +66,7 @@ export default function Home() {
         <Card
             key={dataRamdomUsers.results.indexOf(item)}
             item={item}
+            onDelete={handleDeleteCard}
         />
     )
   })

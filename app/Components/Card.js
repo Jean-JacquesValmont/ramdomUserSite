@@ -44,7 +44,11 @@ const Card = (props) => {
         else if (key == "password"){
             setIsPasswordHovered(true)
         }
-    };
+    }
+
+    const handleDelete = () => {
+        props.onDelete(props.item) // Appeler la fonction onDelete du composant parent avec l'élément actuel
+    }
 
     const handleMouseEnterName = () => handleMouseEnter("name")
     const handleMouseEnterBirthday = () => handleMouseEnter("birthday")
@@ -57,7 +61,7 @@ const Card = (props) => {
 
   return (
     <div className="flex flex-col text-center justify-center bg-gradient-to-b from-green-900 to-green-500 border-4 border-double border-grey-500 rounded-lg transform hover:scale-105 transition-transform">
-        {isCrossHovered ? <ImCross className="absolute top-0 right-0 m-2 cursor-pointer text-red-500 bg-black" onMouseLeave={handleMouseLeaveCross}/> 
+        {isCrossHovered ? <ImCross className="absolute top-0 right-0 m-2 cursor-pointer text-red-500 bg-black" onClick={handleDelete} onMouseLeave={handleMouseLeaveCross}/> 
         : <ImCross className="absolute top-0 right-0 m-2 cursor-pointer bg-white" onMouseEnter={handleMouseEnterCross}/> }
         <img src={props.item.picture.large} alt=""/>
         <div className="flex justify-between m-2">
