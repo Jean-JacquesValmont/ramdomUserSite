@@ -9,7 +9,7 @@ const BirthdayFilter = ({onFilterChange}) => {
     }
 
   return (
-    <div className="flex">
+    <div className="flex justify-center m-2">
         <div>
             <label>Min Age</label>
             <input
