@@ -21,5 +21,5 @@ npm run dev
 # or
 yarn dev
 ```
-Ensuite ouvrez [http://localhost:3000](http://localhost:3000) pour pouvoir y accèder.
+Ouvrez votre navigateur et accédez à http://localhost:3000 pour accéder au projet.
 
