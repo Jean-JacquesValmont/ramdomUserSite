@@ -28,7 +28,7 @@ const BirthdayFilter = ({onFilterChange}) => {
                 onChange={(e) => setMaxAge(e.target.value)}
             />
         </div>
-        <button onClick={handleFilterChange}>Confirm</button>
+        <button className="bg-yellow-300 border-2 border-black rounded-lg p-2 hover:bg-yellow-600" onClick={handleFilterChange}>Confirm</button>
     </div>
   )
 }
