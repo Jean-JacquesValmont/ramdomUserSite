@@ -2,14 +2,34 @@
 import React, { useState } from "react"
 import useFetch from "./CustomHook/UseFetch"
 import Card from "./Components/Card"
+import BirthdayFilter from "./Components/BirthdayFilter"
 
 export default function Home() {
+
   const [numberOfUser, setNumberOfUser] = useState(5)
   const dataRamdomUsers = useFetch("https://randomuser.me/api/?results="+String(numberOfUser), numberOfUser)
+  const [filteredData, setFilteredData] = useState(dataRamdomUsers)
+  const [isfilteredApplied, setIsfilteredApplied] = useState(false)
   const styleButton = "bg-green-300 border-2 border-black rounded-lg p-2 hover:bg-green-600";
 
   if (!dataRamdomUsers.results || dataRamdomUsers.results.length === 0) {
     return <div>Loading...</div>;
+  }
+
+  const handleFilterChange = ({min, max}) => {
+    const minAge = parseFloat(min)
+    const maxAge = parseFloat(max)
+
+    const updatedFilterData = dataRamdomUsers.results.filter((item) => {
+      const itemAge = parseFloat(item.age)
+      return(
+        (isNaN(minAge)|| itemAge >= minAge) && 
+        (isNaN(maxAge)|| itemAge <= maxAge)
+      )
+    })
+
+    setFilteredData(updatedFilterData)
+    setIsfilteredApplied(true)
   }
 
   const modifiedNumberOfUser = (number) => {
@@ -35,6 +55,7 @@ export default function Home() {
 
   return (
     <main className="bg-white">
+      <BirthdayFilter onFilterChange={handleFilterChange}/>
       <div className="flex justify-between m-4">
         <button className={styleButton} onClick={increasedNumberByOne}>Increase by 1 user</button>
         <button className={styleButton} onClick={increasedNumberByTen}>Increase by 10 user</button>
@@ -42,7 +63,7 @@ export default function Home() {
         <button className={styleButton} onClick={decreaseNumberByTen}>Decreased by 10 user</button>
       </div>
       <div className="m-4 grid grid-cols-5 gap-6">
-        {cardsUser}
+      {isfilteredApplied && filteredData.length === 0 ? <p> Aucun résultat trouvé.</p> : cardsUser}
       </div>
     </main>
   )
