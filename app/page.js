@@ -16,6 +16,11 @@ export default function Home() {
     return <div>Loading...</div>;
   }
 
+  const handleResetfilter = () => {
+    setIsfilteredApplied(false)
+    setFilteredData(dataRamdomUsers.results)
+  }
+
   const handleFilterChange = ({min, max}) => {
     const minAge = parseFloat(min)
     const maxAge = parseFloat(max)
@@ -73,7 +78,10 @@ export default function Home() {
 
   return (
     <main className="bg-white">
-      <BirthdayFilter onFilterChange={handleFilterChange}/>
+      <div className="flex justify-between mx-2">
+        <BirthdayFilter onFilterChange={handleFilterChange}/>
+        <button onClick={handleResetfilter}>Reset age filter</button>
+      </div>
       <div className="flex justify-between m-4">
         <button className={styleButton} onClick={increasedNumberByOne}>Increase by 1 user</button>
         <button className={styleButton} onClick={increasedNumberByTen}>Increase by 10 user</button>
